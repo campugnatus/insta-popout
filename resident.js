@@ -1,12 +1,13 @@
 (function(history){
     var pushState = history.pushState;
     history.pushState = function(state) {
-        setTimeout(pushStateHandler, 0);
+        // setTimeout(pushStateHandler, 0);
+        console.log("resident pushState!");
         return pushState.apply(history, arguments);
     };
 })(window.history);
 
-pushStateHandler();
+// pushStateHandler();
 
 function pushStateHandler () {
     if (!location.pathname.match("^/p/.*")) {
@@ -25,7 +26,7 @@ function pushStateHandler () {
     else {
         // wait for the article to appear, then handle
 
-        let observer = new MutationObserver((mutationis, observer) => {
+        let observer = new MutationObserver((mutations, observer) => {
             let article = dialog.querySelector("article");
             if (article) {
                 if (handleArticle(article)) {
@@ -62,6 +63,6 @@ function handleArticle (article) {
     return true;
 }
 
-window.addEventListener('popstate', (event) => {
-  console.log("popstate event! location: " + document.location + ", state: " + JSON.stringify(event.state));
-});
+// window.addEventListener('popstate', (event) => {
+//   console.log("popstate event! location: " + document.location + ", state: " + JSON.stringify(event.state));
+// });

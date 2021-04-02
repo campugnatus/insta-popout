@@ -7,12 +7,24 @@
 
     "offline_enabled": false,
 
-    "permissions": [],
+    "permissions": [
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking",
+        "*://*.com/"
+    ],
 
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": true
+    },
 
     "content_scripts": [
         {
             "matches": ["https://www.instagram.com/*"],
+            "css": ["mahstyle.css"],
             "js": ["contentScript.js"]
         }
     ],
