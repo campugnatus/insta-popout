@@ -1,25 +1,11 @@
 {
     "manifest_version": 2,
 
-    "name": "Blow up Instagram",
-    "description": "Well...",
+    "name": "Instagram pop out button",
+    "description": "Puts a button on images on Instagram to open them in a new tab in their original resolution",
     "version": "1.0",
 
     "offline_enabled": false,
-
-    "permissions": [
-        "webNavigation",
-        "webRequest",
-        "webRequestBlocking",
-        "*://*.com/"
-    ],
-
-    "background": {
-        "scripts": [
-            "background.js"
-        ],
-        "persistent": true
-    },
 
     "content_scripts": [
         {
@@ -27,7 +13,5 @@
             "css": ["mahstyle.css"],
             "js": ["contentScript.js"]
         }
-    ],
-
-    "web_accessible_resources": ["resident.js"]
+    ]
 }
