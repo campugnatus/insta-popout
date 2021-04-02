@@ -27,6 +27,37 @@
 var lastUrl;
 var timer;
 
+var articles = document.getElementsByTagName("article");
+
+var globalObserver = new MutationObserver((mutations, observer) => {
+    console.log("global mutated!", mutations);
+
+    // let articles = document.getElementsByTagName("article");
+
+    for (let i = 0; i < articles.length; i++) {
+        let article = articles[i];
+        if (article.getAttribute("role") === 'presentation' && !article.getAttribute("blown-up-ok")) {
+            article.style.border = "5px solid green";
+        }
+    }
+
+    // articles.forEach(article => {
+    //     if (article.getAttribute("role") === 'presentation' && !article.getAttribute("blown-up-ok")) {
+    //         article.style.border = "5px solid green";
+    //     }
+    // });
+
+    // mutations.forEach(mutation => {
+    //     mutation.addedNodes.forEach(node => {
+    //         if (node.tagName === "ARTICLE" && node.getAttribute("role") === "presentation")
+    //             node.style.border = "5px solid green";
+    //     });
+    // });
+});
+
+
+globalObserver.observe(document.getElementsByTagName("body")[0], {childList: true, subtree: true});
+
 // background script DOES send a history event on initial load, but at that time
 // this script isn't injected yet. So... calling explicitly.
 handlePage(location.href);
@@ -53,14 +84,14 @@ var homeObserver = new MutationObserver((mutations, observer) => {
     console.log("home mutated!", mutations);
     mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
-            // if (node.tagName === "ARTICLE" && node.attributes.role === "presentation")
-            handle2Article(node);
+            if (node.tagName === "ARTICLE" && node.getAttribute("role") === "presentation")
+                handle2Article(node);
         });
     });
 });
 
 function handle2Article (article) {
-    article.style.border = "5px solid red";
+    // article.style.border = "5px solid red";
     article.setAttribute("blown-up-ok", true);
 }
 
