@@ -33,7 +33,6 @@ function addButton (img) {
         // don't add a second one
         return;
 
-    // console.log("add btn", img);
     let btn = document.createElement("button");
     btn.className = 'blow-up-button';
     btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
