@@ -1,9 +1,14 @@
 {
     "manifest_version": 2,
 
-    "name": "Instagram pop out button",
-    "description": "Puts a button on images on Instagram to open them in a new tab in their original resolution",
+    "name": "Instagram Pop Out button",
+    "description": "Adds a button on top of the images on Instagram, which opens the corresponding image in a new tab in higher resolution.",
     "version": "1.0",
+
+    "icons": {
+        "16": "logo1-16.png",
+        "128": "logo1-128.png"
+    },
 
     "offline_enabled": false,
 
