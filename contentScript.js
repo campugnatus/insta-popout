@@ -1,7 +1,7 @@
 // HTMLCollection updates itself, hoho!
 var articles = document.getElementsByTagName("article");
 
-var globalObserver = new MutationObserver(function globalMutationCallback (mutations, observer) {
+var globalObserver = new MutationObserver(function (mutations, observer) {
     for (let i = 0; i < articles.length; i++) {
         let article = articles[i];
         if (article.getAttribute("role") === 'presentation') {
@@ -11,8 +11,10 @@ var globalObserver = new MutationObserver(function globalMutationCallback (mutat
     }
 });
 
-globalObserver.observe(document.getElementsByTagName("body")[0], {childList: true, subtree: true});
-
+globalObserver.observe(document.getElementsByTagName("body")[0], {
+    childList: true,
+    subtree: true
+});
 
 function handleArticle (article) {
     // article.style.border = "5px solid red";
@@ -24,7 +26,6 @@ function handleArticle (article) {
             addButton(img);
     }
 }
-
 
 function addButton (img) {
     let grandparent = img.parentNode.parentNode;
