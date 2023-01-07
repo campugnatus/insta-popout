@@ -6,8 +6,8 @@
     "version": "1.1",
 
     "icons": {
-        "16": "logo1-16.png",
-        "128": "logo1-128.png"
+        "16": "logo/logo1-16.png",
+        "128": "logo/logo1-128.png"
     },
 
     "offline_enabled": false,
